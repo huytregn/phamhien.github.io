@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp Tiền</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+        .bank-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .bank-info h3 {
+            margin: 0;
+            color: #333;
+        }
+        .bank-info p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Thông báo chào mừng -->
+    <div class="form-container" id="welcome-message">
+        <h2>Xin chào, <span id="random-username"></span>!</h2>
+        <p>Chào mừng bạn đã đăng nhập tự động. Hãy tiếp tục để nạp tiền.</p>
+    </div>
+
+    <!-- Form nạp tiền -->
+    <div class="form-container" id="deposit-form">
+        <h2>Nạp Tiền</h2>
+        <div class="form-group">
+            <label for="name">Tên của bạn:</label>
+            <input type="text" id="name" placeholder="Nhập tên của bạn">
+        </div>
+        <div class="form-group">
+            <label for="amount">Số tiền muốn nạp (VND):</label>
+            <input type="number" id="amount" placeholder="Nhập số tiền">
+        </div>
+        <div class="form-group">
+            <button onclick="showBankInfo()">Nạp Tiền</button>
+        </div>
+
+        <div class="bank-info" id="bank-info" style="display: none;">
+            <h3>Thông Tin Tài Khoản Ngân Hàng</h3>
+            <p>Ngân hàng: Vietcombank</p>
+            <p>Chủ tài khoản: [Tên chủ tài khoản của bạn]</p>
+            <p>Số tài khoản: [Số tài khoản của bạn]</p>
+            <p>Nội dung chuyển khoản: [Tên + Số tiền muốn nạp]</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hàm tạo tên ngẫu nhiên
+    function generateRandomUsername() {
+        const names = ["User123", "RandomUser", "Guest456", "User789", "UserXYZ"];
+        return names[Math.floor(Math.random() * names.length)];
+    }
+
+    // Tự động "đăng nhập" và hiển thị tên ngẫu nhiên
+    document.addEventListener("DOMContentLoaded", function() {
+        const randomUsername = generateRandomUsername();
+        document.getElementById("random-username").innerText = randomUsername;
+        document.getElementById("name").value = randomUsername; // Tự động điền tên vào form nạp tiền
+    });
+
+    // Hiển thị thông tin ngân hàng
+    function showBankInfo() {
+        document.getElementById("bank-info").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
